@@ -24,7 +24,7 @@ class Auth extends Controller
 
     public function userRegister()
     {
-        $user = new \App\Entities\UserData();
+        $user = new \App\Entities\User();
         $user->email = $this->req->getPost('email');
         $user->username = $this->req->getPost('username');
         $user->password = $this->req->getPost('password');

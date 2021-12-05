@@ -4,7 +4,7 @@ namespace App\Entities;
 
 use CodeIgniter\Entity\Entity;
 
-class UserData extends Entity
+class Jabatan extends Entity
 {
     // ...
 }
