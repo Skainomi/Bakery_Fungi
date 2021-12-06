@@ -18,5 +18,6 @@ class ItemController extends Controller
             'IdBarang' => $id
         );
         return view("user/item", $data);
+        
     }
 }

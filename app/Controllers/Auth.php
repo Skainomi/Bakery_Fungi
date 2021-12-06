@@ -33,7 +33,7 @@ class Auth extends Controller
         $user->no_tlvn = $this->req->getPost('no_tlvn');
         $userModel = new \App\Models\UserData();
         $userModel->insert($user);
-        return view("user/item");
+        return redirect()->to('/');
     }
 
     public function adminLogin()
@@ -53,9 +53,16 @@ class Auth extends Controller
             $loginData = [
                 'username' => $username
             ];
+            var_dump($loginData);
             $this->session->set($loginData);
-            return view("user/item");
+            return redirect()->to('/');
         }
-        return view("user/item");
+        return redirect()->to('login');
+    }
+
+    public function userLogout()
+    {
+        $this->session->destroy();
+        return redirect()->to('/');
     }
 }

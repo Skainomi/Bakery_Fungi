@@ -5,7 +5,6 @@
   <title style="font-family:bakery;">Rara | Home</title>
   <link rel="icon" href="/assets/img/logoD.png">
   <!-- link -->
-  <div class="">
   <link rel = "stylesheet" type = "text/css" href = "/assets/css/utility.css">
     <link rel="stylesheet" href="/assets/css/BOOTSTRAP/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/font.css">
@@ -16,19 +15,6 @@
   <!-- style -->
   <div class="">
     <style>
-      .buttonContinue {
-        transition-property: all;
-        transition: 1s 0s;
-      }
-
-      .buttonContinue:hover {
-        color: white;
-      }
-
-      .colorButtonContinue {
-        color: white;
-      }
-
       @media screen and (max-width: 1250px) {
         .navbar-expand-lg .navbar-collapse {
           font-size: 1.7rem !important;
@@ -95,8 +81,8 @@
   </div>
 </head>
 <body id="body" style="background-color:#ffffff;">
-<!-- <div id="navContainer" class="fluid-container fixed-top">
-      
+  <!-- <div id="navContainer" class="fluid-container fixed-top">
+
   </div> -->
   <div class="fluid-container fixed-top">
     <nav class="navbar navbar-light" style="background-color: rgb(204, 51, 0, 1);width:100%;height:90px;">
@@ -116,8 +102,8 @@
           <h2><a href="cart.php">Cart</a></h2><br>
           <h2><a href="checkOut.php">Check Out</a></h2><br>
           <?php
-        } else {
-            ?>
+        }else {
+          ?>
           <h2><a href="login.php">Login</a></h2><br>
           <?php
         }
@@ -132,23 +118,18 @@
   <?php
     // echo ($login ? substr($_SESSION['username'],0,4) : "User");
    ?>
-  <main>
-
-    <div class="fluid-container" style="width:100%;height: 100%;position:relative;">
-      <div class="container" style="width: 800px;position:absolute;top:60px;font-family:bakery;color:	rgb(204, 102, 0);margin:110px 0px 0px 30px;">
-        <h1 style="font-size: 3.5rem;text-shadow: 2px 2px black;">Freshly baked all day. <br>Every day!</h1>
-        <p style="font-size: 1.5rem;color:white;text-shadow: 2px 2px black;">Sometimes on the way to your dream you get lost and find a better one. it is okay to change your mind
-        . if you thought you always wanted to be a doctor only to discover after medical school that what you really wanted to do was to get fresh baked bread. life is too short
-      not to follow your heart. So grab one fresh baked at maidworks 
-      bakery!</p>
-        <a href="store.php">
-          <div id="continueButton" class="container" style="width:fit-content;margin:0px;cursor:pointer;">
-            <a href="store.php" id="continueText" class="buttonContinue" style="">Continue To Store</a>
-            <img id="imgContinue" src="/assets/icon/keyboard_arrow_right-black-18dp.svg"style="opacity: .5;background: yellow;border-radius: 30px;width:45px;height:45px;" alt="">
-          </div>
-        </a>
+  <main style="margin-top:100px;">
+    <div class="box" style="width:90%;height:fit-content;">
+      <h1 style="letter-spacing: 3px;">Rara Bakery</h1>
+      <hr>
+    </div>
+    <div class="box" style="width:90%;height:fit-content;margin-top:20px;">
+      <h1>Contact : </h1><br>
+      <div class="" style="display:flex;">
+        <img src="/assets/img/logowa.png" alt="" style="width:100px;height:100px;">
+        <h1 style="font-size:3rem;margin-top:20px;">085292197466</h1>
       </div>
-      <img src="/assets/img/frontPagePic.jpg" alt="" style="position:fixed;z-index:-1;width:100%;height:100vh;">
+      <h1 style="font-size:3rem;">https://wa.me/c/6285292197466</h1>
     </div>
   </main>
 </body>

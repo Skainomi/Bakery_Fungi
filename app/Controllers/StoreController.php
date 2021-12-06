@@ -21,5 +21,7 @@ class StoreController extends Controller{
         );
         return view("user/store", $data);
     }
+    
 
 }
+
