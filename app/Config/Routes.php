@@ -38,6 +38,11 @@ $routes->add('/login', 'LoginController::index', ['as' => 'login']);
 $routes->post('loginCheck', 'Auth::userLogin', ['as' => 'login_check']);
 $routes->add('/logout', 'Auth::userLogout', ['as' => 'logout']);
 $routes->add('/about', 'AboutController::index', ['as' => 'about']);
+$routes->add('/cart', 'CartController::index', ['as' => 'cart']);
+
+
+
+
 
 /*
  * --------------------------------------------------------------------

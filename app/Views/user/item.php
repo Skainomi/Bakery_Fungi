@@ -165,7 +165,7 @@
               <button style="border-radius:20px;width:200px;margin-left:10px;" type="button" name="button">Big</button>
             </div>
           </div> -->
-          <form class="" action="cartOrder.php" method="post">
+          <form class="" action="<?= base_url('/cart') ?>" method="post">
             <div class="" style="margin-top:20px;">
               <label for="itemQuantity">Quantity : </label><br>
               <input id="itemQuantity" min="1" style="font-size:1.4rem;width:140px" type="number" name="bnyk_barang" value="1">

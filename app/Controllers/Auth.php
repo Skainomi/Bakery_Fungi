@@ -51,9 +51,9 @@ class Auth extends Controller
         ])->get()->getResult();
         if($user){
             $loginData = [
-                'username' => $username
+                'username' => $username,
+                'id' => $user[0]->id_user
             ];
-            var_dump($loginData);
             $this->session->set($loginData);
             return redirect()->to('/');
         }

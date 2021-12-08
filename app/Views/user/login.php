@@ -23,8 +23,6 @@
           font-size: 1.7rem !important;
         }
 
-        
-
         .bannerText {
           font-size: 4.5rem;
         }
