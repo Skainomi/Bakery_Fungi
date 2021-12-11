@@ -1,16 +1,14 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\UserData;
 use CodeIgniter\Controller;
-use CodeIgniter\HTTP\RequestInterface;
-use CodeIgniter\HTTP\IncomingRequest;
 
 class Auth extends Controller
 {
     protected $req;
     private $db;
     private $userData;
-    private $adminData;
     public $session;
 
     public function __construct()
@@ -24,32 +22,33 @@ class Auth extends Controller
 
     public function userRegister()
     {
-        $user = new \App\Entities\User();
-        $user->email = $this->req->getPost('email');
-        $user->username = $this->req->getPost('username');
-        $user->password = $this->req->getPost('password');
-        $user->nama = $this->req->getPost('nama');
-        $user->alamat = $this->req->getPost('alamat');
-        $user->no_tlvn = $this->req->getPost('no_tlvn');
-        $userModel = new \App\Models\UserData();
-        $userModel->insert($user);
-        return redirect()->to('/');
-    }
+        $data = [
+            'email' => $this->req->getPost('email'),
+            'username' => $this->req->getPost('username'),
+            'password' => $this->req->getPost('password'),
+            'nama' => $this->req->getPost('name'),
+            'alamat' => $this->req->getPost('alamat'),
+            'no_tlvn' => $this->req->getPost('phoneNumber')
+        ];
+        if ($this->userData->insert($data)) {
+            return redirect()->to('/');
+        }
 
-    public function adminLogin()
-    {
-        return ;
+        return redirect()->to('/register');
     }
 
     public function userLogin()
     {
+        if (!is_null($this->session['username'])) {
+            return redirect()->to('/');
+        }
         $username = $this->req->getPost('username');
         $password = $this->req->getPost('password');
         $user = $this->userData->where([
             'username' => $username,
             'password' => $password
         ])->get()->getResult();
-        if($user){
+        if ($user) {
             $loginData = [
                 'username' => $username,
                 'id' => $user[0]->id_user

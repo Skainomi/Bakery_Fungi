@@ -1,19 +1,16 @@
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
   <title style="font-family:bakery;">Rara | Home</title>
-  <link rel="icon" href="/assets/img/logoD.png">
+  <link rel="icon" href="../asset/img/logoD.png">
   <!-- link -->
-  <div>
-  <link rel = "stylesheet" type ="text/css" href = "/assets/css/utility.css">
-    <link rel="stylesheet" href="/assets/css/BOOTSTRAP/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/font.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/animation.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/utility.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/index.css">
+  <div class="">
+    <link rel="stylesheet" href="../BOOTSTRAP/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/font.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/animation.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/utility.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/index.css">
   </div>
   <!-- style -->
   <div class="">
@@ -74,20 +71,20 @@
   </div>
   <!-- js -->
   <div class="">
-    <script type="text/javascript" src="/assets/js/JQUERY/jquery-3.5.1.js"></script>
-    <script type="text/javascript" src="/assets/js/utility.js"></script>
-    <script type="text/javascript" src="/assets/js/index.js"></script>
-    <script type="text/javascript" src="/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../JQUERY/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="../JS/utility.js"></script>
+    <script type="text/javascript" src="../JS/index.js"></script>
+    <script type="text/javascript" src="../BOOTSTRAP/js/bootstrap.bundle.min.js"></script>
   </div>
   <div class="loader-wrapper" style="position:fixed">
     <span class="loader"><span class="loader-inner"></span></span>
   </div>
 </head>
-<body id="body" style="background-color:chocolate;">
+<body id="body" style="background-color:#EEEEEE;">
   <div class="fluid-container fixed-top">
     <nav class="navbar navbar-light" style="background-color: rgb(204, 51, 0, 1);width:100%;height:90px;">
     <div class="container-fluid" style="z-index:100;">
-      <a class="navbar-brand" href="index.php" style="font-family:bakeryNormal;font-size: 2rem;color:white;margin-left:30px;"><img style="width:200px;height:80px;margin-top:-8px;" src="/assets//img/logo.png" alt=""></a>
+      <a class="navbar-brand" href="index.php" style="font-family:bakeryNormal;font-size: 2rem;color:white;margin-left:30px;"><img style="width:200px;height:80px;margin-top:-8px;" src="../asset/img/logo.png" alt=""></a>
       <div id="navIcon" class="nav-icon">
         <div></div>
       </div>
@@ -95,12 +92,16 @@
     <div id="navMenu" class="fluid-container" style="height:100vh;display: none;position:absolute;top:0px;width:100%;">
       <div class="showMenu" style="float: right;">
         <?php
-        if (true) {
+        if (!is_null($id)) {
             ?>
           <h2><a href="account.php">Account</a></h2><br>
           <h2><a href="logOut.php">Log Out</a></h2><br>
           <h2><a href="cart.php">Cart</a></h2><br>
           <h2><a href="checkOut.php">Check Out</a></h2><br>
+          <?php
+        }else {
+          ?>
+          <h2><a href="login.php">Login</a></h2><br>
           <?php
         }
          ?>
@@ -111,40 +112,35 @@
     </div>
   </nav>
   </div>
-  <?php
-    // echo ($login ? substr($_SESSION['username'],0,4) : "User");
-   ?>
-  <main>
-    <div class="" style="margin-bottom:100px;">
-    </div>
-    <div class="isiform">
-      <div class="gambarForm" style="float:left;margin:10px 30px 0px 0px;">
-        <img class="gameBannerImg" style="margin-left:-30px;" src="/assets/img/logoKotak.png" alt="">
-        <h1>Don't have an account?</h1>
-        <a href="register.php"><button class="button" type="button" name="button" style="margin-left:60px;">REGISTER HERE</button></a>
+  <main style="margin-top:200px;">
+    <?php
+    if (is_null($transaction)) {
+      ?>
+      <div class="cartBoxSummary" style="width:100%;padding: 0px 100px;">
+        <h1 style="text-align:center">Tidak Ada Pembayaran Yang Sedang Berlangsung</h1>
       </div>
-      <form style="float:left;" action="<?= base_url('/login-check') ?>" method="post">
-        <br>
-        <h1 class="textRegister">LOGIN</h1>
-        <?php
-          if (isset($_GET['cd'])) {
-              if ($_GET['cd'] == 0) {
-                  echo "<h1 style=\"font-size:1rem;color:red;\">Username/Password Salah</h1>";
-              }
-          }
-         ?>
-        <br>
-        <label for="">Username : </label><br>
-        <input class="inputText" type="text" id="" name="username" required value="">
-        <br>
-        <br>
-        <label for="">Password :</label><br>
-        <input class="inputText" type="password" id="" name="password" required value="">
-        <br>
-        <br>
-        <input class="button" style="padding:3px 8.8vw;margin-top:20px" onclick="" type="submit" value="Submit">
-      </form>
-    </div>
+      <?php
+    }else{
+      ?>
+      <div class="cartBoxSummary" style="width:100%;padding: 0px 100px;">
+        <h1 style="text-align:center">Mohon Selesaikan Pembayaran</h1>
+        <hr style="width:100%">
+        <h1>Kode Pembelian : <?php echo $transaction->id_penjualan ?> ?></h1>
+        <h1>Pembayaran Ke : 123123123</h1>
+        <div class="" style="display:flex;">
+          <form style="margin-right:20px;" class="" action="cancelOrder.php" method="post">
+            <input type="hidden" name="id_penjualan" value="<?php echo $transaction->id_penjualan ?>">
+            <input class="btn btn-danger" type="submit" name="" value="Cancel Order">
+          </form>
+          <form class="" action="finishOrder.php" method="post">
+            <input type="hidden" name="id_penjualan" value="<?php echo $transaction->id_penjualan ?>">
+            <input class="btn btn-primary" type="submit" name="" value="Finish Order">
+          </form>
+        </div>
+      </div>
+      <?php
+    }
+     ?>
   </main>
 </body>
 <footer class="container-fluid bg-dark" style="width:100%;height:content;">

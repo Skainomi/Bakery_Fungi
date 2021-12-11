@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class UserData extends Model
 {
-    protected $table      = 'data_users';
+    protected $table      = 'data_user';
     protected $primaryKey = 'id_user';
     protected $useAutoIncrement = true;
     protected $returnType     = \App\Entities\UserData::class;

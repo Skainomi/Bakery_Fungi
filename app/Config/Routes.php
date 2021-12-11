@@ -31,14 +31,22 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'UserController::index', ['as' => 'index']);
-$routes->get('/store', 'StoreController::index');
-$routes->add('/item/(:any)', 'ItemController::index/$1');
-$routes->add('/login', 'LoginController::index', ['as' => 'login']);
-$routes->post('loginCheck', 'Auth::userLogin', ['as' => 'login_check']);
+$routes->add('/', 'UserController::index', ['as' => 'index']);
+$routes->add('/store', 'StoreController::index');
+$routes->get('/item/(:any)', 'ItemController::index/$1');
+$routes->add('/login', function(){
+    return view("user/login");
+}, ['as' => 'login']);
+$routes->post('/login-check', 'Auth::userLogin', ['as' => 'login_check']);
 $routes->add('/logout', 'Auth::userLogout', ['as' => 'logout']);
 $routes->add('/about', 'AboutController::index', ['as' => 'about']);
 $routes->add('/cart', 'CartController::index', ['as' => 'cart']);
+$routes->add('/check-out', 'CartController::finish', ['as' => 'check_out']);
+$routes->add('/register', function(){
+    return view("user/register");
+}, ['as' => 'register']);
+$routes->post('/register-check', 'Auth::userRegister');
+$routes->post('/cart-add', 'CartController::add');
 
 
 

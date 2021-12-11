@@ -20,7 +20,6 @@ class UserController extends Controller
             'heading' => 'My Heading',
             'message' => 'My Message'
         );
-        // echo "data : " . $data[0]->id_user;
         return view("user/index", $data);
     }
 }

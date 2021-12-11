@@ -1,78 +1,9 @@
-<?php
-// include '../php/utility.php';
-// $conn = connect();
-// if (isUserLogin()) {
-//     $idUser = getUserId();
-// }else {
-//   header("Location:login.php?");
-// }
-
-// $totalBiaya = 0;
-
-// $idCart = [];
-// $idBarangCart = [];
-// $bnykBarangCart = [];
-// $noItem = false;
-
-// $resultCart = $conn -> query("SELECT * FROM `data_cart_user` WHERE `id_user` = '$idUser'");
-// if ($resultCart -> num_rows > 0) {
-//     $bnykCart = $resultCart -> num_rows;
-//     while ($rowCart = $resultCart -> fetch_assoc()) {
-//         array_push($idCart, $rowCart['id_cart']);
-//         array_push($idBarangCart, $rowCart['id_barang']);
-//         array_push($bnykBarangCart, $rowCart['bnyk_barang']);
-//     }
-// } else {
-//     $noItem = true;
-//     $bnykCart = 0;
-// }
-
-// $idBarang = [];
-// $namaBarang = [];
-// $gambarBarang = [];
-// $tipeBarang = [];
-// $rating = [];
-// $hargaBarang = [];
-// $produksiBarang = [];
-// $jumlahBarang = [];
-// $descBarang = [];
-// $idPegawai = [];
-// $bnykBarang = 0;
-
-// for ($i = 0; $i < $bnykCart; $i++) {
-//     $resultBarang = $conn -> query("SELECT * FROM `data_barang` WHERE `id_barang` = $idBarangCart[$i]");
-//     if ($resultBarang -> num_rows > 0) {
-//         $bnykBarang += $resultBarang -> num_rows;
-//         while ($rowBarang = $resultBarang -> fetch_assoc()) {
-//             array_push($idBarang, $rowBarang['id_barang']);
-//             array_push($namaBarang, $rowBarang['nama_barang']);
-//             if (is_null($rowBarang['gambar'])) {
-//                 array_push($gambarBarang, "0");
-//             } else {
-//                 array_push($gambarBarang, $rowBarang['gambar']);
-//             }
-//             array_push($tipeBarang, $rowBarang['tipe_barang']);
-//             array_push($rating, $rowBarang['rating']);
-//             array_push($hargaBarang, $rowBarang['harga_barang']);
-//             array_push($produksiBarang, $rowBarang['produksi_barang']);
-//             array_push($jumlahBarang, $rowBarang['jumlah_barang']);
-//             array_push($descBarang, $rowBarang['desc_barang']);
-//             array_push($idPegawai, $rowBarang['id_pegawai']);
-//         }
-//     }
-// }
-?>
-
-<!-- <script type="text/javascript">
-  bnykBarang = <?php echo $bnykBarang; ?>;
-  bnykItem = <?php echo $bnykBarang; ?>;
-  hargaItem = <?php echo json_encode($hargaBarang); ?>;
-  bnykBarangItem = <?php echo json_encode($bnykBarangCart); ?>;
-</script> -->
-
-<?php
-
- ?>
+<script type="text/javascript">
+  bnykBarang = <?php echo count($data_Barang_Cart) ?>;
+  bnykItem = <?php echo count($data_Barang_Cart)?>;
+  hargaItem = <?php echo json_encode($itemsPrice); ?>;
+  bnykBarangItem = <?php echo json_encode($cartsItem); ?>;
+</script>
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
