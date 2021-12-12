@@ -24,9 +24,6 @@
   </div>
 </head>
 <body id="body" style="background-color:#ffffff;">
-  <!-- <div id="navContainer" class="fluid-container fixed-top">
-
-  </div> -->
   <div class="fluid-container fixed-top">
     <nav class="navbar navbar-light" style="background-color: rgb(204, 51, 0, 1);width:100%;height:90px;">
     <div class="container-fluid" style="z-index:100;">
@@ -40,27 +37,24 @@
         <?php
         if (isset($_SESSION['username'])) {
             ?>
-          <h2><a href="account.php">Account</a></h2><br>
-          <h2><a href="logOut.php">Log Out</a></h2><br>
-          <h2><a href="cart.php">Cart</a></h2><br>
-          <h2><a href="checkOut.php">Check Out</a></h2><br>
+          <h2><a href="account">Account</a></h2><br>
+          <h2><a href="log-out">Log Out</a></h2><br>
+          <h2><a href="cart">Cart</a></h2><br>
+          <h2><a href="check-out">Check Out</a></h2><br>
           <?php
         }else {
           ?>
-          <h2><a href="login.php">Login</a></h2><br>
+          <h2><a href="login">Login</a></h2><br>
           <?php
         }
          ?>
-        <h2><a href="index.php">Home</a></h2><br>
-        <h2><a href="store.php">Store</a></h2><br>
-        <h2><a href="about.php">About Us</a></h2><br>
+        <h2><a href="/">Home</a></h2><br>
+        <h2><a href="store">Store</a></h2><br>
+        <h2><a href="about">About Us</a></h2><br>
       </div>
     </div>
   </nav>
   </div>
-  <?php
-    // echo ($login ? substr($_SESSION['username'],0,4) : "User");
-   ?>
   <main style="margin-top:100px;">
     <div class="box" style="width:90%;height:fit-content;">
       <h1 style="letter-spacing: 3px;">Rara Bakery</h1>

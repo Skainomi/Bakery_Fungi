@@ -39,7 +39,7 @@ class ItemController extends Controller
             'bnyk_barang' => $this->req->getPost('bnyk_barang')
         ];
         if($builder->insert($data)){
-            return redirect()->to('/cart-add');
+            return redirect()->to('/cart');
         }
 
         return redirect()->to('/store');

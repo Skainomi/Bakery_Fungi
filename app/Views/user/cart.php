@@ -34,7 +34,7 @@
 
   </div> -->
   <div class="fluid-container fixed-top">
-    <nav class="navbar navbar-light" style="background-color: rgb(204, 51, 0, 1);width:100%;height:90px;">
+  <nav class="navbar navbar-light" style="background-color: rgb(204, 51, 0, 1);width:100%;height:90px;">
     <div class="container-fluid" style="z-index:100;">
       <a class="navbar-brand" href="index.php" style="font-family:bakeryNormal;font-size: 2rem;color:white;margin-left:30px;"><img style="width:200px;height:80px;margin-top:-8px;" src="/assets/img/logo.png" alt=""></a>
       <div id="navIcon" class="nav-icon">
@@ -44,22 +44,22 @@
     <div id="navMenu" class="fluid-container" style="height:100vh;display: none;position:absolute;top:0px;width:100%;">
       <div class="showMenu" style="float: right;">
         <?php
-        if ($is_login) {
+        if (isset($_SESSION['username'])) {
             ?>
-          <h2><a href="account.php">Account</a></h2><br>
-          <h2><a href="logOut.php">Log Out</a></h2><br>
-          <h2><a href="cart.php">Cart</a></h2><br>
-          <h2><a href="checkOut.php">Check Out</a></h2><br>
+          <h2><a href="account">Account</a></h2><br>
+          <h2><a href="log-out">Log Out</a></h2><br>
+          <h2><a href="cart">Cart</a></h2><br>
+          <h2><a href="check-out">Check Out</a></h2><br>
           <?php
-        }else {
-          ?>
+        } else {
+            ?>
           <h2><a href="login.php">Login</a></h2><br>
           <?php
         }
          ?>
-        <h2><a href="index.php">Home</a></h2><br>
-        <h2><a href="store.php">Store</a></h2><br>
-        <h2><a href="about.php">About Us</a></h2><br>
+        <h2><a href="/">Home</a></h2><br>
+        <h2><a href="store">Store</a></h2><br>
+        <h2><a href="about">About Us</a></h2><br>
       </div>
     </div>
   </nav>
@@ -95,8 +95,8 @@
            <div class="">
              <?php
              echo "<script>cartItem = 4;</script>";
-             foreach ($data_Barang_Cart as $key => $value) {
-                 ?>
+           foreach ($data_Barang_Cart as $key => $value) {
+               ?>
                 <div class="box" style="display:flex;width:680px;height:200px;font-size:.2rem;margin:60px 0px;">
                  <img src="<?php echo $value[0]->gambar; ?>" style="padding:10px;border-radius:30px;width:140px;height:160px;" alt="">
                  <div class="" style="display:flex;">
@@ -133,8 +133,8 @@
                    </div>
                  </div>
                </div>
-               <?php 
-             }?>
+               <?php
+           } ?>
            </div>
            <div class=""style="border-right:1px solid black;margin:0px 20px;">
            </div>
@@ -148,7 +148,7 @@
                  <td>
                    <h4>Total Item : </h4><br>
                  </td>
-                 <?php 
+                 <?php
                  foreach ($data_Barang_Cart as $key => $value) {
                      ?> 
                      <tr>
@@ -161,8 +161,7 @@
                      </td>
                    </tr>
                      <?php
-                 }
-                 ?>
+                 } ?>
                </tr>
                <tr>
                  <td style="display: flex;justify-content: space-between">

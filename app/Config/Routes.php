@@ -46,7 +46,8 @@ $routes->add('/register', function(){
     return view("user/register");
 }, ['as' => 'register']);
 $routes->post('/register-check', 'Auth::userRegister');
-$routes->post('/cart-add', 'CartController::add');
+$routes->post('/cart-add', 'ItemController::add');
+$routes->add('/account', 'Auth::account', ['as' => 'account']);
 
 
 

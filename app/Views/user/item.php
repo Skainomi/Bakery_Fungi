@@ -35,7 +35,7 @@
   <!-- <div id="navContainer" class="fluid-container fixed-top">
   </div> -->
   <div class="fluid-container fixed-top">
-    <nav class="navbar navbar-light" style="background-color: rgb(204, 51, 0, 1);width:100%;height:90px;">
+  <nav class="navbar navbar-light" style="background-color: rgb(204, 51, 0, 1);width:100%;height:90px;">
     <div class="container-fluid" style="z-index:100;">
       <a class="navbar-brand" href="index.php" style="font-family:bakeryNormal;font-size: 2rem;color:white;margin-left:30px;"><img style="width:200px;height:80px;margin-top:-8px;" src="/assets/img/logo.png" alt=""></a>
       <div id="navIcon" class="nav-icon">
@@ -45,22 +45,22 @@
     <div id="navMenu" class="fluid-container" style="height:100vh;display: none;position:absolute;top:0px;width:100%;">
       <div class="showMenu" style="float: right;">
         <?php
-        if (is_null($_SESSION['username'])) {
+        if (isset($_SESSION['username'])) {
             ?>
-          <h2><a href="account.php">Account</a></h2><br>
-          <h2><a href="logOut.php">Log Out</a></h2><br>
-          <h2><a href="cart.php">Cart</a></h2><br>
-          <h2><a href="checkOut.php">Check Out</a></h2><br>
+          <h2><a href="account">Account</a></h2><br>
+          <h2><a href="log-out">Log Out</a></h2><br>
+          <h2><a href="cart">Cart</a></h2><br>
+          <h2><a href="check-out">Check Out</a></h2><br>
           <?php
-        } else {
-            ?>
-          <h2><a href="login.php">Login</a></h2><br>
+        }else {
+          ?>
+          <h2><a href="login">Login</a></h2><br>
           <?php
         }
          ?>
-        <h2><a href="index.php">Home</a></h2><br>
-        <h2><a href="store.php">Store</a></h2><br>
-        <h2><a href="about.php">About Us</a></h2><br>
+        <h2><a href="/">Home</a></h2><br>
+        <h2><a href="store">Store</a></h2><br>
+        <h2><a href="about">About Us</a></h2><br>
       </div>
     </div>
   </nav>
@@ -91,12 +91,12 @@
             <h1><?php echo $DataBarang[0]->nama_barang; ?></h1>
             <h2><?php echo $DataBarang[0]->harga_barang; ?></h4>
           </div>
-          <form class="" action="<?= base_url('/cart') ?>" method="post">
+          <form class="" action="<?= base_url('/cart-add') ?>" method="post">
             <div class="" style="margin-top:20px;">
               <label for="itemQuantity">Quantity : </label><br>
               <input id="itemQuantity" min="1" style="font-size:1.4rem;width:140px" type="number" name="bnyk_barang" value="1">
             </div>
-            <input type="hidden" name="id_barang" value="<?php echo $IdBarang ?>">
+            <input type="hidden" name="id_barang" value="<?php echo $DataBarang[0]->id_barang; ?>">
             <input style="margin-top:20px;width:400px;" type="submit" name="" value="ORDER NOW">
           </form>
           <div class="" style="margin-top:20px;">

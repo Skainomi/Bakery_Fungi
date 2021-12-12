@@ -26,12 +26,9 @@
     <span class="loader"><span class="loader-inner"></span></span>
   </div>
 </head>
-
-<body id="body" style="background-image:url(../assets/img/background.png)">
-  <!-- <div id="navContainer" class="fluid-container fixed-top">
-  </div> -->
+<body id="body" style="background-image:url(/assets/img/background.png)">
   <div class="fluid-container fixed-top">
-    <nav class="navbar navbar-light" style="background-color: rgb(204, 51, 0, 1);width:100%;height:90px;">
+  <nav class="navbar navbar-light" style="background-color: rgb(204, 51, 0, 1);width:100%;height:90px;">
     <div class="container-fluid" style="z-index:100;">
       <a class="navbar-brand" href="index.php" style="font-family:bakeryNormal;font-size: 2rem;color:white;margin-left:30px;"><img style="width:200px;height:80px;margin-top:-8px;" src="/assets/img/logo.png" alt=""></a>
       <div id="navIcon" class="nav-icon">
@@ -41,32 +38,27 @@
     <div id="navMenu" class="fluid-container" style="height:100vh;display: none;position:absolute;top:0px;width:100%;">
       <div class="showMenu" style="float: right;">
         <?php
-        if (true) {
+        if (isset($_SESSION['username'])) {
             ?>
-          <h2><a href="account.php">Account</a></h2><br>
-          <h2><a href="logOut.php">Log Out</a></h2><br>
-          <h2><a href="cart.php">Cart</a></h2><br>
-          <h2><a href="checkOut.php">Check Out</a></h2><br>
+          <h2><a href="account">Account</a></h2><br>
+          <h2><a href="log-out">Log Out</a></h2><br>
+          <h2><a href="cart">Cart</a></h2><br>
+          <h2><a href="check-out">Check Out</a></h2><br>
           <?php
-        } else {
-            ?>
-          <h2><a href="login.php">Login</a></h2><br>
+        }else {
+          ?>
+          <h2><a href="login">Login</a></h2><br>
           <?php
         }
          ?>
-        <h2><a href="index.php">Home</a></h2><br>
-        <h2><a href="store.php">Store</a></h2><br>
-        <h2><a href="about.php">About Us</a></h2><br>
+        <h2><a href="/">Home</a></h2><br>
+        <h2><a href="store">Store</a></h2><br>
+        <h2><a href="about">About Us</a></h2><br>
       </div>
     </div>
   </nav>
   </div>
-  <?php
-    // echo ($login ? substr($_SESSION['username'],0,4) : "User");
-   ?>
-  <!-- <img src="" alt="" style="position:fixed;z-index:-10;width:100%;height:100vh;"> -->
   <main>
-
     <div class="container" style="margin-top:150px;height:40px;width:100%;margin-left:0px;">
       <h1 style="font-size:1.4rem;"><a href="index.php">Home</a>/Store</h1>
     </div>
@@ -93,26 +85,20 @@
             </div>
             <div id="slider-container" style="margin:20px;padding:0px 100px;"></div>
             <p>
-            <!-- <?php
-            //$maxFilterPrice = echo "<script></script>";
-             ?> -->
             <label for="amount">Price range:<br><span id="minCost">0</span> - <span id="maxCost">300000</span></label>
-            <!-- <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" /> -->
             </p>
             <div id="computers">
-            <!-- <h1>Min : <span id="minCost"></span></h1><br>
-            <h1>Max : <span id="maxCost"></span></h1> -->
             </div>
             <div id="slider-range"></div>
           </div>
           <div class="frontBox" id="containerItem" style="flex-basis: 0;flex-grow:3;overflow:hidden;padding-bottom:20px;">
             <div class="" style="margin:20px auto;width:100%;height:100%;align-items: flex-start;flex-wrap: wrap;display: flex;overflow:hidden;">
               <?php
+              echo "<script>bnykItem =" . count($DataBarang) ."</script>";
               foreach ($DataBarang as $index => $key) {
                   ?>
-                <a class="item box filterDiv<?php echo $key->tipe_barang; ?> show" style="align-self: flex-start;height: 260px;" href="item/<?php echo $key->id_barang; ?>"  data-price="<?php echo $key->harga_barang; ?>" >
+                <a class="item box filterDiv <?php echo $DataSatuanTipeBarang[$index][0]->kode_tipe; ?> show" style="align-self: flex-start;height: 260px;" href="item/<?php echo $key->id_barang; ?>"  data-price="<?php echo $key->harga_barang; ?>" >
                   <div class="boxContent" style="">
-                    <?php //echo $i;?>
                     <img class="boxImg" style="margin:0px auto;z-index: 0;" src="<?php echo $key->gambar; ?>"alt="">
                     <h1 class="contentText itemName" style="font-size: 18px;margin-top:5px;text-align:center;"><?php echo $key->nama_barang; ?></h1>
                     <h1 class="contentText" style="text-decoration: underline;"><?php echo $key->harga_barang; ?></h1>
@@ -135,5 +121,4 @@
   </div>
 </footer>
 <!-- <div>Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a>is licensed by CC BY 3.0</div> -->
-
 </html>

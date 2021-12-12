@@ -17,7 +17,7 @@ class StoreController extends Controller{
         $data = array(
             'DataTipeBarang' => $dataTipe->get()->getResult(),
             'DataBarang' => $dataBarang,
-            'DataSatuanTipeBarang' => (object) $dataTipeBarang
+            'DataSatuanTipeBarang' => $dataTipeBarang
         );
         return view("user/store", $data);
     }

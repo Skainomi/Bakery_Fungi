@@ -43,7 +43,7 @@ tr{
 } */
 
 #myInput {
-  background-image: url('../asset/icon/search-24px.svg');
+  background-image: url('/assets/icon/search-24px.svg');
   background-position: 10px 12px;
   background-repeat: no-repeat;
   width: 100%;

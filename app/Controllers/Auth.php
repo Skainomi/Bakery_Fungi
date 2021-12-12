@@ -39,7 +39,7 @@ class Auth extends Controller
 
     public function userLogin()
     {
-        if (!is_null($this->session['username'])) {
+        if (!is_null($this->session->get('username'))) {
             return redirect()->to('/');
         }
         $username = $this->req->getPost('username');
@@ -64,4 +64,15 @@ class Auth extends Controller
         $this->session->destroy();
         return redirect()->to('/');
     }
+
+    public function account(){
+        if (is_null($this->session->get('username'))) {
+            return redirect()->to('/');
+        }
+        $user = $this->userData->where([
+            'username' => $this->session->get('username')
+        ])->get()->getResult();
+        return view('user/account', ['data' => $user]);
+    }
+
 }
