@@ -18,63 +18,6 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/animation.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/utility.css">
   </div>
-  <!-- style -->
-  <div class="">
-    <style>
-      @media screen and (max-width: 1250px) {
-        .navbar-expand-lg .navbar-collapse {
-          font-size: 1.7rem !important;
-        }
-
-        .bannerText {
-          font-size: 4.5rem;
-        }
-      }
-
-      @media screen and (max-width: 1092px) {
-        .navItemUser {
-          margin-left: 40vw !important;
-        }
-      }
-
-      @media screen and (max-width: 1038px) {
-        .bannerText {
-          font-size: 4.2rem;
-        }
-      }
-
-      @media screen and (max-width: 991px) {
-        .navItemUser {
-          margin-left: 0 !important;
-        }
-      }
-
-      @media screen and (max-width: 520px) {
-        * {
-          display: none;
-        }
-      }
-
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        box-shadow: inset 0 0 5px grey;
-        border-radius: 10px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 10px;
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-      }
-    </style>
-  </div>
   <!-- js -->
   <div class="">
     <script type="text/javascript" src="/assets/js/JQUERY/jquery-3.5.1.js"></script>
@@ -150,14 +93,11 @@
            ?>
          <div class="" style="display:flex;">
            <div class="">
-             <!-- <input id="addAllItem" checked style="width:20px;height:20px;" type="checkbox" name="" value="">
-             <label style="cursor:pointer;" for="addAllItem">Check All Items</label> -->
              <?php
              echo "<script>cartItem = 4;</script>";
              foreach ($data_Barang_Cart as $key => $value) {
                  ?>
                 <div class="box" style="display:flex;width:680px;height:200px;font-size:.2rem;margin:60px 0px;">
-                 <!-- <input id="cartItemCheck<?php echo $key; ?>" checked style="width:20px;height:20px;" type="checkbox" name="" value=""> -->
                  <img src="<?php echo $value[0]->gambar; ?>" style="padding:10px;border-radius:30px;width:140px;height:160px;" alt="">
                  <div class="" style="display:flex;">
                    <div class="">
@@ -172,12 +112,6 @@
                            <input style="margin:0px;padding: 0px;float:left;border:none;background:none;font-size:1rem;" type="submit" name="" value="Delete">
                          </form>
                        </div>
-                       <!-- <div class="" style="border-right:1px solid grey;height:15px;margin:auto 0px;">
-                       </div> -->
-                       <!-- <div class="" style="margin-left:10px;margin-top:5px;cursor:pointer;">
-                         <img style="float:left;" src="/assets/icon/favorite_border-black-18dp.svg" alt="">
-                         <h6 style="float:left;">Add to favorite</h6>
-                       </div> -->
                      </div>
                    </div>
                    <div class="" style="margin:20px 20px;">

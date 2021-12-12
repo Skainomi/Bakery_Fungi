@@ -12,63 +12,6 @@
     <link rel="stylesheet" type="text/css" href="../CSS/utility.css">
     <link rel="stylesheet" type="text/css" href="../CSS/index.css">
   </div>
-  <!-- style -->
-  <div class="">
-    <style>
-      @media screen and (max-width: 1250px) {
-        .navbar-expand-lg .navbar-collapse {
-          font-size: 1.7rem !important;
-        }
-
-        .bannerText {
-          font-size: 4.5rem;
-        }
-      }
-
-      @media screen and (max-width: 1092px) {
-        .navItemUser {
-          margin-left: 40vw !important;
-        }
-      }
-
-      @media screen and (max-width: 1038px) {
-        .bannerText {
-          font-size: 4.2rem;
-        }
-      }
-
-      @media screen and (max-width: 991px) {
-        .navItemUser {
-          margin-left: 0 !important;
-        }
-      }
-
-      @media screen and (max-width: 520px) {
-        * {
-          display: none;
-        }
-      }
-
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        box-shadow: inset 0 0 5px grey;
-        border-radius: 10px;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 10px;
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-      }
-    </style>
-  </div>
   <!-- js -->
   <div class="">
     <script type="text/javascript" src="../JQUERY/jquery-3.5.1.js"></script>
@@ -99,8 +42,8 @@
           <h2><a href="cart.php">Cart</a></h2><br>
           <h2><a href="checkOut.php">Check Out</a></h2><br>
           <?php
-        }else {
-          ?>
+        } else {
+            ?>
           <h2><a href="login.php">Login</a></h2><br>
           <?php
         }
@@ -115,13 +58,13 @@
   <main style="margin-top:200px;">
     <?php
     if (is_null($transaction)) {
-      ?>
+        ?>
       <div class="cartBoxSummary" style="width:100%;padding: 0px 100px;">
         <h1 style="text-align:center">Tidak Ada Pembayaran Yang Sedang Berlangsung</h1>
       </div>
       <?php
-    }else{
-      ?>
+    } else {
+        ?>
       <div class="cartBoxSummary" style="width:100%;padding: 0px 100px;">
         <h1 style="text-align:center">Mohon Selesaikan Pembayaran</h1>
         <hr style="width:100%">
