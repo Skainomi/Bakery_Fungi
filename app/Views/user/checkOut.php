@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   <title style="font-family:bakery;">Rara | Home</title>
-  <link rel="icon" href="../asset/img/logoD.png">
+  <link rel="icon" href="/assets/img/logoD.png">
   <!-- link -->
   <div class="">
-    <link rel="stylesheet" href="../BOOTSTRAP/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../CSS/font.css">
-    <link rel="stylesheet" type="text/css" href="../CSS/animation.css">
-    <link rel="stylesheet" type="text/css" href="../CSS/utility.css">
-    <link rel="stylesheet" type="text/css" href="../CSS/index.css">
+  <link rel = "stylesheet" type ="text/css" href = "/assets/css/utility.css">
+    <link rel="stylesheet" href="/assets/css/BOOTSTRAP/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/animation.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/utility.css">
   </div>
   <!-- js -->
   <div class="">
-    <script type="text/javascript" src="../JQUERY/jquery-3.5.1.js"></script>
-    <script type="text/javascript" src="../JS/utility.js"></script>
-    <script type="text/javascript" src="../JS/index.js"></script>
-    <script type="text/javascript" src="../BOOTSTRAP/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/assets/js/JQUERY/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="/assets/js/utility.js"></script>
+    <script type="text/javascript" src="/assets/js/cart.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
   </div>
   <div class="loader-wrapper" style="position:fixed">
     <span class="loader"><span class="loader-inner"></span></span>
@@ -68,14 +68,10 @@
       <div class="cartBoxSummary" style="width:100%;padding: 0px 100px;">
         <h1 style="text-align:center">Mohon Selesaikan Pembayaran</h1>
         <hr style="width:100%">
-        <h1>Kode Pembelian : <?php echo $transaction->id_penjualan ?> ?></h1>
+        <h1>Kode Pembelian : <?php echo $transaction[0]->id_penjualan ?></h1>
         <h1>Pembayaran Ke : 123123123</h1>
         <div class="" style="display:flex;">
-          <form style="margin-right:20px;" class="" action="cancelOrder.php" method="post">
-            <input type="hidden" name="id_penjualan" value="<?php echo $transaction->id_penjualan ?>">
-            <input class="btn btn-danger" type="submit" name="" value="Cancel Order">
-          </form>
-          <form class="" action="finishOrder.php" method="post">
+          <form class="" action="<?php echo base_url('/finish-order') ?>" method="post">
             <input type="hidden" name="id_penjualan" value="<?php echo $transaction->id_penjualan ?>">
             <input class="btn btn-primary" type="submit" name="" value="Finish Order">
           </form>

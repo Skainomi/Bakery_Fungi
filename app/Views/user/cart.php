@@ -138,7 +138,7 @@
            <div class="cartBoxSummary" style="width:32vw;">
              <h1>Summary</h1>
              <hr>
-             <form class="" action="<?php echo base_url('/cart-add')?>" method="post">
+             <form class="" action="<?php echo base_url('/check-add')?>" method="post">
                <input type="hidden" name="bnykBarang" value="<?php echo count($data_cart); ?>">
              <table style="margin:0px;width:100%;">
                <tr style="width:100%;">

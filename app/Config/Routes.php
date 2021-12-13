@@ -51,6 +51,7 @@ $routes->post('/cart-add', 'ItemController::add');
 $routes->post('/check-add', 'CheckoutController::add');
 $routes->post('/delete-Cart', 'CartController::destroy');
 $routes->add('/account', 'Auth::account', ['as' => 'account']);
+$routes->add('/finish-order', 'CheckoutController::finish', ['as' => 'finish_order']);
 
 
 

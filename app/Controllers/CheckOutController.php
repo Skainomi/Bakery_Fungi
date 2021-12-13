@@ -2,21 +2,22 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use CodeIgniter\I18n\Time;
 
 class CheckOutController extends Controller
 {
     private $session;
     private $db;
-    private $id;
+    public $id;
     private $req;
 
 
     public function __construct()
     {
         $this->session = \Config\Services::session();
-        $id = $this->session->get('id');
+        $this->id = $this->session->get('id');
 
-        if(is_null($id)){
+        if(is_null($this->id)){
             return view('user/index');
         }
 
@@ -28,16 +29,16 @@ class CheckOutController extends Controller
     public function index()
     {
         $transactionData = $this->db->table('data_penjualan')->where([
-            'id_user' => $this->id
-        ])->get();
+            'id_user' => $this->id,
+            'status' => '0'
+        ])->get()->getResult();
 
-        if(is_null($transactionData->id)){
-            return view('/');
+        if(is_null($transactionData)){
+            return view('user/index');
         }
-        
-        return view("user/about", [
-            'transaction', $transactionData,
-            'id', $this->id
+        return view("user/checkOut", [
+            'transaction' => $transactionData,
+            'id' => $this->id
         ]);
     }
 
@@ -45,27 +46,30 @@ class CheckOutController extends Controller
     {
         if($this->db->table('data_penjualan')->where([
             'id_user' => $this->id
-        ])->delete()){
-            return view('index');
+        ])->update([
+            'status' => '1'
+        ])){
+            return view('user/index');
         }
     }
 
     public function add()
     {
         if($this->db->table('data_penjualan')->where([
-            'status' => "0",
+            'status' => "1",
             'id_user' => $this->session->get('id')
-        ])){
+        ])->get()->getResult()){
             return redirect()->to('cart');
         }
         $id = $this->session->get('id');
         $items = $this->req->getPost('bnykBarang');
+
         $data = [
             'id_penjualan' => null,
             'id_user' => $id,
             'jumlah_barang' => $items,
             'harga_barang' => $this->req->getPost('totalBiaya'),
-            'tanggal_terjual' => now(),
+            'tanggal_terjual' => (string) new Time('now', 'Asia/Jakarta'),
             'status' => '0',
             'tanggal_bayar' => null
         ];
@@ -78,12 +82,12 @@ class CheckOutController extends Controller
             $this->db->table('data_cart_user')->delete([
                 'id_user' => $id
             ]);
-            foreach ($items as $key => $value) {
+            for ($i=0; $i < $items; $i++) { 
                 $dataDet = [
                     'id_det_penjualan' => null,
                     'id_penjualan' => $transactionId,
-                    'id_barang' => $this->req->getPost('idItem')[$key],
-                    'jumlah_bayar' => $this->req->getPost('totalSemuaBarang')[$key]
+                    'id_barang' => $this->req->getPost('idItem'.$i),
+                    'jumlah_barang' => $this->req->getPost('itemCounterInput'.$i)
                 ];
                 $this->db->table('data_det_penjualan')->insert($dataDet);
             }
