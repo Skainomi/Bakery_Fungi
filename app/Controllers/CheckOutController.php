@@ -5,9 +5,10 @@ use CodeIgniter\Controller;
 
 class CheckOutController extends Controller
 {
-    public $session;
-    public $db;
-    public $id;
+    private $session;
+    private $db;
+    private $id;
+    private $req;
 
 
     public function __construct()
@@ -20,6 +21,7 @@ class CheckOutController extends Controller
         }
 
         $this->db = \Config\Database::connect();
+        $this->req = \Config\Services::request();
 
     }
 
@@ -30,7 +32,7 @@ class CheckOutController extends Controller
         ])->get();
 
         if(is_null($transactionData->id)){
-            return view('index');
+            return view('/');
         }
         
         return view("user/about", [
@@ -46,6 +48,48 @@ class CheckOutController extends Controller
         ])->delete()){
             return view('index');
         }
+    }
+
+    public function add()
+    {
+        if($this->db->table('data_penjualan')->where([
+            'status' => "0",
+            'id_user' => $this->session->get('id')
+        ])){
+            return redirect()->to('cart');
+        }
+        $id = $this->session->get('id');
+        $items = $this->req->getPost('bnykBarang');
+        $data = [
+            'id_penjualan' => null,
+            'id_user' => $id,
+            'jumlah_barang' => $items,
+            'harga_barang' => $this->req->getPost('totalBiaya'),
+            'tanggal_terjual' => now(),
+            'status' => '0',
+            'tanggal_bayar' => null
+        ];
+        $insert = $this->db->table('data_penjualan')->insert($data);
+        $transactionId = $this->db->table('data_penjualan')->where([
+            'id_user' => $id,
+            'status' => '0' 
+        ])->get()->getResult()[0]->id_penjualan;
+        if($insert){
+            $this->db->table('data_cart_user')->delete([
+                'id_user' => $id
+            ]);
+            foreach ($items as $key => $value) {
+                $dataDet = [
+                    'id_det_penjualan' => null,
+                    'id_penjualan' => $transactionId,
+                    'id_barang' => $this->req->getPost('idItem')[$key],
+                    'jumlah_bayar' => $this->req->getPost('totalSemuaBarang')[$key]
+                ];
+                $this->db->table('data_det_penjualan')->insert($dataDet);
+            }
+            return redirect()->to('check-out');
+        }
+        return redirect()->to('cart');
     }
 
 }

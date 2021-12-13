@@ -6,6 +6,7 @@ use CodeIgniter\Controller;
 class StoreController extends Controller{
 
     public function index(){
+        $session = \Config\Services::session();
         $db = \Config\Database::connect();
         $dataBarang = $db->table("data_barang")->get()->getResult();
         $dataTipeBarang = [];

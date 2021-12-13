@@ -36,7 +36,7 @@
   <div class="fluid-container fixed-top">
   <nav class="navbar navbar-light" style="background-color: rgb(204, 51, 0, 1);width:100%;height:90px;">
     <div class="container-fluid" style="z-index:100;">
-      <a class="navbar-brand" href="index.php" style="font-family:bakeryNormal;font-size: 2rem;color:white;margin-left:30px;"><img style="width:200px;height:80px;margin-top:-8px;" src="/assets/img/logo.png" alt=""></a>
+      <a class="navbar-brand" href="<?php echo base_url('/')?>" style="font-family:bakeryNormal;font-size: 2rem;color:white;margin-left:30px;"><img style="width:200px;height:80px;margin-top:-8px;" src="/assets/img/logo.png" alt=""></a>
       <div id="navIcon" class="nav-icon">
         <div></div>
       </div>
@@ -44,22 +44,22 @@
     <div id="navMenu" class="fluid-container" style="height:100vh;display: none;position:absolute;top:0px;width:100%;">
       <div class="showMenu" style="float: right;">
         <?php
-        if (isset($_SESSION['username'])) {
+        if (!is_null($_SESSION['username'])) {
             ?>
-          <h2><a href="account">Account</a></h2><br>
-          <h2><a href="log-out">Log Out</a></h2><br>
-          <h2><a href="cart">Cart</a></h2><br>
-          <h2><a href="check-out">Check Out</a></h2><br>
+          <h2><a href="<?php echo base_url('/account')?>">Account</a></h2><br>
+          <h2><a href="<?php echo base_url('/log-out')?>">Log Out</a></h2><br>
+          <h2><a href="<?php echo base_url('/cart')?>">Cart</a></h2><br>
+          <h2><a href="<?php echo base_url('/check-out')?>">Check Out</a></h2><br>
           <?php
-        } else {
-            ?>
-          <h2><a href="login.php">Login</a></h2><br>
+        }else {
+          ?>
+          <h2><a href="<?php echo base_url('/login')?>">Login</a></h2><br>
           <?php
         }
          ?>
-        <h2><a href="/">Home</a></h2><br>
-        <h2><a href="store">Store</a></h2><br>
-        <h2><a href="about">About Us</a></h2><br>
+        <h2><a href="<?php echo base_url('/')?>">Home</a></h2><br>
+        <h2><a href="<?php echo base_url('/store')?>">Store</a></h2><br>
+        <h2><a href="<?php echo base_url('/about')?>">About Us</a></h2><br>
       </div>
     </div>
   </nav>
@@ -73,9 +73,6 @@
         ?>
         <?php
         header("Location:login.php?"); ?>
-        <!-- <h3>Have an account? Sign in and save time.</h3>
-      <button type="button" name="button">Sign In</button><br>
-      <hr style=""> -->
       <?php
     } else {
         ?>
@@ -101,13 +98,13 @@
                  <img src="<?php echo $value[0]->gambar; ?>" style="padding:10px;border-radius:30px;width:140px;height:160px;" alt="">
                  <div class="" style="display:flex;">
                    <div class="">
-                     <h1 style="font-size:2rem;overflow:hidden;width:300px;"><?php echo $namaBarang[$i]; ?></h1>
+                     <h1 style="font-size:2rem;overflow:hidden;width:300px;"><?php echo $value[0]->nama_barang ?></h1>
                      <h4 style="color:grey;font-size:1rem">Size : normal</h4>
                      <h2 style="font-size:1.5rem;"><?php echo $value[0]->harga_barang; ?></h2>
                      <div class="" style="display:flex;">
                        <div class="" style="margin-top:5px;margin-right:10px;cursor:pointer;">
-                         <form class="" action="deleteCart.php" method="post">
-                           <input type="hidden" name="idCart" value="<?php echo $value[0]->id_cart?>">
+                         <form class="" action="<?php echo base_url('/delete-Cart')?>" method="post">
+                           <input type="hidden" name="idCart" value="<?php echo $data_cart[$key]->id_cart?>">
                            <img src="/assets/icon/delete-black-18dp.svg" style="float:left;" alt="">
                            <input style="margin:0px;padding: 0px;float:left;border:none;background:none;font-size:1rem;" type="submit" name="" value="Delete">
                          </form>
@@ -141,7 +138,7 @@
            <div class="cartBoxSummary" style="width:32vw;">
              <h1>Summary</h1>
              <hr>
-             <form class="" action="checkOutCheck.php" method="post">
+             <form class="" action="<?php echo base_url('/cart-add')?>" method="post">
                <input type="hidden" name="bnykBarang" value="<?php echo count($data_cart); ?>">
              <table style="margin:0px;width:100%;">
                <tr style="width:100%;">

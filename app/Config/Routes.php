@@ -38,15 +38,18 @@ $routes->add('/login', function(){
     return view("user/login");
 }, ['as' => 'login']);
 $routes->post('/login-check', 'Auth::userLogin', ['as' => 'login_check']);
-$routes->add('/logout', 'Auth::userLogout', ['as' => 'logout']);
+$routes->add('/log-out', 'Auth::userLogout', ['as' => 'logout']);
 $routes->add('/about', 'AboutController::index', ['as' => 'about']);
 $routes->add('/cart', 'CartController::index', ['as' => 'cart']);
-$routes->add('/check-out', 'CartController::finish', ['as' => 'check_out']);
+$routes->add('/check-out', 'CheckoutController::index', ['as' => 'check_out']);
+$routes->add('/check-finish', 'CheckoutController::finish', ['as' => 'finish_check']);
 $routes->add('/register', function(){
     return view("user/register");
 }, ['as' => 'register']);
 $routes->post('/register-check', 'Auth::userRegister');
 $routes->post('/cart-add', 'ItemController::add');
+$routes->post('/check-add', 'CheckoutController::add');
+$routes->post('/delete-Cart', 'CartController::destroy');
 $routes->add('/account', 'Auth::account', ['as' => 'account']);
 
 

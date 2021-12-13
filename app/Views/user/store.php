@@ -30,7 +30,7 @@
   <div class="fluid-container fixed-top">
   <nav class="navbar navbar-light" style="background-color: rgb(204, 51, 0, 1);width:100%;height:90px;">
     <div class="container-fluid" style="z-index:100;">
-      <a class="navbar-brand" href="index.php" style="font-family:bakeryNormal;font-size: 2rem;color:white;margin-left:30px;"><img style="width:200px;height:80px;margin-top:-8px;" src="/assets/img/logo.png" alt=""></a>
+      <a class="navbar-brand" href="<?php echo base_url('/')?>" style="font-family:bakeryNormal;font-size: 2rem;color:white;margin-left:30px;"><img style="width:200px;height:80px;margin-top:-8px;" src="/assets/img/logo.png" alt=""></a>
       <div id="navIcon" class="nav-icon">
         <div></div>
       </div>
@@ -38,29 +38,29 @@
     <div id="navMenu" class="fluid-container" style="height:100vh;display: none;position:absolute;top:0px;width:100%;">
       <div class="showMenu" style="float: right;">
         <?php
-        if (isset($_SESSION['username'])) {
+        if (!is_null($_SESSION['username'])) {
             ?>
-          <h2><a href="account">Account</a></h2><br>
-          <h2><a href="log-out">Log Out</a></h2><br>
-          <h2><a href="cart">Cart</a></h2><br>
-          <h2><a href="check-out">Check Out</a></h2><br>
+          <h2><a href="<?php echo base_url('/account')?>">Account</a></h2><br>
+          <h2><a href="<?php echo base_url('/log-out')?>">Log Out</a></h2><br>
+          <h2><a href="<?php echo base_url('/cart')?>">Cart</a></h2><br>
+          <h2><a href="<?php echo base_url('/check-out')?>">Check Out</a></h2><br>
           <?php
         }else {
           ?>
-          <h2><a href="login">Login</a></h2><br>
+          <h2><a href="<?php echo base_url('/login')?>">Login</a></h2><br>
           <?php
         }
          ?>
-        <h2><a href="/">Home</a></h2><br>
-        <h2><a href="store">Store</a></h2><br>
-        <h2><a href="about">About Us</a></h2><br>
+        <h2><a href="<?php echo base_url('/')?>">Home</a></h2><br>
+        <h2><a href="<?php echo base_url('/store')?>">Store</a></h2><br>
+        <h2><a href="<?php echo base_url('/about')?>">About Us</a></h2><br>
       </div>
     </div>
   </nav>
   </div>
   <main>
     <div class="container" style="margin-top:150px;height:40px;width:100%;margin-left:0px;">
-      <h1 style="font-size:1.4rem;"><a href="index.php">Home</a>/Store</h1>
+      <h1 style="font-size:1.4rem;"><a href="<?php echo base_url('/')?>">Home</a>/Store</h1>
     </div>
     <div class="fluid-container" style="width:100%;height: 100%;position:relative;">
       <div class="fluid-container" style="display:flex;">

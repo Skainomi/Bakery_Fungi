@@ -5,11 +5,13 @@ use CodeIgniter\Controller;
 
 class CartController extends Controller
 {
-    public $session;
+    private $session;
+    private $req;
 
     public function __construct()
     {
         $this->session = \Config\Services::session();
+        $this->req = \Config\Services::request();
     }
 
     public function index()
@@ -52,4 +54,14 @@ class CartController extends Controller
         );
         return view("user/cart", $data);
     }
+
+    public function destroy()
+    {
+        $db = \Config\Database::connect();
+        $db->table('data_cart_user')->delete([
+            'id_cart' => $this->req->getPost('idCart')
+        ]);
+        return redirect()->to('cart');
+    }
+
 }
