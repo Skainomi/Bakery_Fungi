@@ -45,7 +45,7 @@
     <div id="navMenu" class="fluid-container" style="height:100vh;display: none;position:absolute;top:0px;width:100%;">
       <div class="showMenu" style="float: right;">
         <?php
-        if (!is_null($_SESSION['username'])) {
+        if (isset($_SESSION['username'])) {
             ?>
           <h2><a href="<?php echo base_url('/account')?>">Account</a></h2><br>
           <h2><a href="<?php echo base_url('/log-out')?>">Log Out</a></h2><br>
